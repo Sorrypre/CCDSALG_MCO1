@@ -35,8 +35,8 @@ void writeSortedDataFile(int nTotal, Record *records, char* algoName) {
     fclose(outputFile);
 }
 
-void runAlgo3Param(Record *records, int nTotal, char* algoName, void (*sortFunc)(Record *, int, int *)) {
-    int frequencyCount = 0; // Initialize frequency count
+void runAlgo3Param(Record *records, int nTotal, char* algoName, void (*sortFunc)(Record *, int, long int *)) {
+    long int frequencyCount = 0; // Initialize frequency count
     long startTime, endTime, executionTime;
 
     printf("%s started...\n", algoName);
@@ -45,11 +45,11 @@ void runAlgo3Param(Record *records, int nTotal, char* algoName, void (*sortFunc)
     endTime = currentTimeMillis(); 
     executionTime = endTime - startTime; 
     printf("%s executed in %ld milliseconds.\n", algoName, executionTime);
-    printf("Frequency count: %d\n", frequencyCount);
+    printf("Frequency count: %ld\n", frequencyCount);
     writeSortedDataFile(nTotal, records, algoName);
 }
-void runAlgo4Param(Record *records, int start, int end, char* algoName, void (*sortFunc)(Record *, int, int, int *)) {
-    int frequencyCount = 0; // Initialize frequency count
+void runAlgo4Param(Record *records, int start, int end, char* algoName, void (*sortFunc)(Record *, int, int, long int *)) {
+    long int frequencyCount = 0; // Initialize frequency count
     long startTime, endTime, executionTime;
 
     printf("%s started...\n", algoName);
@@ -58,7 +58,7 @@ void runAlgo4Param(Record *records, int start, int end, char* algoName, void (*s
     endTime = currentTimeMillis(); 
     executionTime = endTime - startTime; 
     printf("%s executed in %ld milliseconds.\n", algoName, executionTime);
-    printf("Frequency count: %d\n", frequencyCount);
+    printf("Frequency count: %ld\n", frequencyCount);
     writeSortedDataFile(end+1, records, algoName);
 }
 

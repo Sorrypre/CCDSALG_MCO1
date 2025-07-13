@@ -10,7 +10,7 @@
 * as needed by the sorting algorithms here.
 */
 
-void merge(Record *arr, int left, int mid, int right, int *frequencyCount) {
+void merge(Record *arr, int left, int mid, int right, long int *frequencyCount) {
     int i, j, k;
     int n1 = mid - left + 1;
     int n2 = right - mid;
@@ -58,7 +58,7 @@ void swap(Record *a, Record *b)
     *b = tempRecord;
 }
 
-int partitionArr(Record *arr, int p, int r, int *frequencyCount)
+int partitionArr(Record *arr, int p, int r, long int *frequencyCount)
 {
     int mid = p + (r - p) / 2;
     swap(&arr[mid], &arr[r]); // Move pivot to end for partitioning
@@ -77,7 +77,7 @@ int partitionArr(Record *arr, int p, int r, int *frequencyCount)
     return i;
 }
 
-void insertionSort(Record *arr, int n, int *frequencyCount)
+void insertionSort(Record *arr, int n, long int *frequencyCount)
 {
     int i, j;    
     Record key;
@@ -87,11 +87,12 @@ void insertionSort(Record *arr, int n, int *frequencyCount)
         j = i - 1;
 
         while (j >= 0) {
-            (*frequencyCount)++; // count comparison
             if (arr[j].idNumber > key.idNumber) {
+                (*frequencyCount)++; // count key comparison
                 arr[j + 1] = arr[j]; // shift element to the right
                 j--;
             } else {
+                (*frequencyCount)++; // count key comparison
                 break; // stop shifting if element is in the correct position
             }
         }
@@ -101,7 +102,7 @@ void insertionSort(Record *arr, int n, int *frequencyCount)
 }
 
 
-void selectionSort(Record *arr, int n, int *frequencyCount)
+void selectionSort(Record *arr, int n, long int *frequencyCount)
 {
     // TODO: Implement this sorting algorithm here.
 
@@ -126,7 +127,7 @@ void selectionSort(Record *arr, int n, int *frequencyCount)
     }
 }
 
-void mergeSort(Record *arr, int p, int r, int *frequencyCount)
+void mergeSort(Record *arr, int p, int r, long int *frequencyCount)
 {
     int mid;
     
@@ -144,7 +145,7 @@ void mergeSort(Record *arr, int p, int r, int *frequencyCount)
 * ones given above. Make sure that the method accepts an array of
 * record structures.
 */
-void quickSort(Record *arr, int p, int r, int *frequencyCount)
+void quickSort(Record *arr, int p, int r, long int *frequencyCount)
 {
     while (p < r)
     {
